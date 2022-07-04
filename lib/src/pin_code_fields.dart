@@ -142,6 +142,10 @@ class PinCodeTextField extends StatefulWidget {
   /// Default is [AutovalidateMode.onUserInteraction]
   final AutovalidateMode autovalidateMode;
 
+  /// the amount of lines displayed maximum if there's an error
+  /// triggered from validator
+  final int? errorMaxLines;
+
   /// The vertical padding from the [PinCodeTextField] to the error text
   /// Default is 16.
   final double errorTextSpace;
@@ -234,6 +238,7 @@ class PinCodeTextField extends StatefulWidget {
     this.autoDismissKeyboard = true,
     this.autoDisposeControllers = true,
     this.onSubmitted,
+    this.errorMaxLines,
     this.errorAnimationController,
     this.beforeTextPaste,
     this.dialogConfig,
@@ -748,6 +753,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
           // using same as background color so tha it can blend into the view
           cursorWidth: 0.01,
           decoration: InputDecoration(
+            errorMaxLines: widget.errorMaxLines,
             contentPadding: const EdgeInsets.all(0),
             border: InputBorder.none,
             fillColor: widget.backgroundColor,
